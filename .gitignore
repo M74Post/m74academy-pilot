@@ -1,0 +1,6 @@
+
+docs
+
+session_01/output/
+__pycache__/
+*.pyc
