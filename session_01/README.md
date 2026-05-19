@@ -6,36 +6,46 @@
 
 ## Cosa farai oggi
 
-1. Ordinare a mano una copia dei file arrivati dal laboratorio.
+1. Immaginare cosa succederebbe se dovessi ordinare a mano migliaia di file.
 2. Eseguire alcuni comandi che leggono gli stessi nomi in modo automatico.
-3. Collegare ogni comando alla funzione che lo fa funzionare.
-4. Modificare una riga e osservare come cambia il comportamento del comando.
+3. Trattare ogni comando come una piccola applicazione.
+4. Collegare l'interfaccia del comando alla funzione che lo fa funzionare.
+5. Modificare una riga e osservare come cambia il comportamento dell'applicazione.
 
-Non devi imparare Python oggi. Concentrati su tre domande:
+Non devi imparare Python oggi. Concentrati su una metafora:
 
-- Che cosa riceve il comando?
-- Che cosa decide?
-- Che cosa produce?
+> Ogni comando è una piccola app.
 
-Ogni comando è una piccola app. La funzione è il codice dentro quell'app. Se cambiamo una riga nella funzione, cambiamo il comportamento dell'app.
+Come ogni app, ha:
+
+- un input: che cosa riceve,
+- una decisione: che cosa fa con quell'input,
+- un output: che cosa produce.
+
+Il nome che scrivi nel terminale è l'interfaccia dell'app. La funzione è il codice dentro l'app. Se cambiamo una riga nella funzione, cambiamo il comportamento dell'app.
 
 ---
 
-## Parte 1 — L'ordinamento manuale
+## Parte 1 — Il problema manuale
 
-Hai ricevuto la cartella `data_manual/`. Contiene una copia dei frame di uno show arrivati dal laboratorio: tutti in una cartella piatta, senza struttura.
+Immagina di ricevere una cartella con migliaia di frame arrivati dal laboratorio: tutti insieme, in una cartella piatta, senza struttura.
 
-Aprila. Guarda i file.
+I nomi assomigliano a questo:
 
-Prova a ordinarli a mano in una struttura di cartelle che abbia senso: ogni shot nella sua cartella, ogni dipartimento in una sottocartella.
+```text
+red_001_0010_anim_v001.1001.exr
+```
 
-Userai `data_manual/` solo per questo esercizio. La cartella `data/` deve restare com'è: servirà allo script.
+Potresti spostarli a mano: creare cartelle per ogni show, sequenza, shot, dipartimento e versione, poi mettere ogni file nel posto giusto.
 
-**Domande mentre lavori:**
+Con pochi file è possibile. Con migliaia diventa fragile.
+
+**Domande:**
 
 - Come sai a quale shot appartiene ogni file?
 - Come sai a quale dipartimento appartiene?
-- Quanto sei sicuro di non aver perso nessun file?
+- Quanto tempo ci vorrebbe con migliaia di frame?
+- Quanto sei sicuro di non spostare un file nel posto sbagliato?
 
 ---
 
@@ -101,14 +111,20 @@ Apri il file explorer. Trova la cartella `output/` che è apparsa dentro `sessio
 **Domande:**
 
 - La struttura è quella che ti aspettavi?
-- Confrontala con il tuo ordinamento manuale. Cosa cambia?
-- Quanto tempo ha impiegato il comando rispetto a te?
+- Quale informazione del nome è diventata una cartella?
+- Se `ingest` fosse una piccola app, qual è il suo input?
+- Qual è il suo output?
+- Cosa cambierebbe se i file fossero migliaia?
 
 ---
 
 ## Parte 5 — Che cosa ha fatto il comando?
 
-Il comando `ingest` è una piccola app: riceve una cartella piatta, legge i nomi dei file e crea una struttura.
+Il comando `ingest` è una piccola app:
+
+- input: una cartella piatta di file,
+- decisione: leggere ogni nome e costruire un percorso,
+- output: una struttura di cartelle.
 
 Apri `shot_manager.py` in VSCode.
 
@@ -194,6 +210,14 @@ subcommands.add_parser("count", ...)
 ```
 
 Questo è il registro delle piccole app disponibili. Ogni nome di comando è collegato a una funzione.
+
+Puoi leggerlo così:
+
+```text
+nome nel terminale → funzione da eseguire
+```
+
+Il nome è l'interfaccia dell'app. La funzione è il comportamento dell'app.
 
 Ora trova la funzione `cmd_count`.
 
