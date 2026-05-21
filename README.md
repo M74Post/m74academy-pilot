@@ -62,6 +62,41 @@ Non serve memorizzare sintassi Python. La cosa importante è collegare quello ch
 
 ---
 
+## Perche useremo JSON
+
+Nelle sessioni non useremo JSON perche e "piu tecnico". Lo useremo perche e memoria organizzata.
+
+```text
+Una nota libera e memoria per le persone.
+Un JSON e memoria per persone e strumenti.
+```
+
+Una nota puo dire:
+
+```text
+Sara sta lavorando allo shot 0010. E in progress. Il dipartimento e comp.
+```
+
+Un JSON mette la stessa informazione in caselle stabili:
+
+```json
+{
+  "shot": "0010",
+  "user": "sara",
+  "status": "in_progress",
+  "department": "comp"
+}
+```
+
+Questa struttura permette a comandi, dashboard, spreadsheet, tool DCC o AI assistant di leggere gli stessi dati senza indovinare.
+
+```text
+cartelle -> dove sono i file?
+JSON     -> che cosa sappiamo dello shot?
+```
+
+---
+
 ## Aprire il progetto
 
 1. Apri VS Code.

@@ -62,6 +62,23 @@ Ma in produzione servono anche altre domande:
 
 Queste informazioni non stanno sempre nel nome del file. Per ricordarle, useremo un file JSON chiamato manifest.
 
+Perche JSON e non una nota normale?
+
+Una nota libera puo essere chiara per una persona:
+
+```text
+Sara sta lavorando allo shot 0010. E in progress. Il dipartimento e comp.
+```
+
+Ma un tool deve indovinare:
+
+- dove si trova lo shot?
+- qual e lo user?
+- qual e lo status?
+- cosa succede se qualcuno scrive la stessa nota con parole diverse?
+
+Un JSON e piu simile a una scheda con caselle nominate:
+
 Esempio:
 
 ```json
@@ -77,6 +94,20 @@ Esempio:
 ```
 
 Il manifest e la memoria leggibile dello shot.
+
+```text
+Una nota e memoria per le persone.
+Un JSON e memoria organizzata per persone e strumenti.
+```
+
+Se il campo si chiama sempre `status`, un comando puo filtrare, contare o mostrare gli shot per stato. Se il campo si chiama sempre `user`, un altro tool puo rispondere alla domanda: "chi sta lavorando su questo shot?"
+
+Questo e il punto della sessione:
+
+```text
+cartelle -> dove sono i file?
+JSON     -> che cosa sappiamo dello shot?
+```
 
 ---
 
@@ -269,32 +300,6 @@ Domande:
 - Che cosa sta contando adesso il comando?
 - Hai cambiato il comando nel terminale?
 - Hai cambiato una riga nella funzione?
-
----
-
-## Tools da GitHub - nota breve
-
-Molti tool scaricati da GitHub seguono la stessa idea:
-
-```text
-nome comando -> argomenti -> funzione Python -> output
-```
-
-A volte li lanci direttamente:
-
-```bash
-python script.py comando argomenti
-```
-
-A volte vengono installati e diventano comandi del terminale:
-
-```bash
-nome_tool comando argomenti
-```
-
-Il concetto non cambia: il terminale e l'interfaccia, gli argomenti sono l'input, il codice e il comportamento.
-
-Gli esempi concreti saranno scelti in seguito.
 
 ---
 
