@@ -64,10 +64,16 @@ Queste informazioni non stanno sempre nel nome del file. Per ricordarle, useremo
 
 Perche JSON e non una nota normale?
 
+Apri prima:
+
+```text
+session_02/data/shots.txt
+```
+
 Una nota libera puo essere chiara per una persona:
 
 ```text
-Sara sta lavorando allo shot 0010. E in progress. Il dipartimento e comp.
+Sara sta lavorando allo shot 0010. E in progress. Il dipartimento e comp. Da controllare il bordo del matte.
 ```
 
 Ma un tool deve indovinare:
@@ -76,6 +82,12 @@ Ma un tool deve indovinare:
 - qual e lo user?
 - qual e lo status?
 - cosa succede se qualcuno scrive la stessa nota con parole diverse?
+
+Ora apri:
+
+```text
+session_02/data/shots.json
+```
 
 Un JSON e piu simile a una scheda con caselle nominate:
 
@@ -89,6 +101,7 @@ Esempio:
   "department": "comp",
   "user": "sara",
   "status": "in_progress",
+  "notes": "Da controllare il bordo del matte sul personaggio principale.",
   "last_update": "2026-05-20T09:00:00"
 }
 ```
@@ -99,6 +112,8 @@ Il manifest e la memoria leggibile dello shot.
 Una nota e memoria per le persone.
 Un JSON e memoria organizzata per persone e strumenti.
 ```
+
+Il campo `notes` contiene informazione libera che serve alle persone: un dubbio, un blocco, un dettaglio di review. Non ripete `shot`, `user`, `status` o `department`, perche quei dati hanno gia campi dedicati.
 
 Se il campo si chiama sempre `status`, un comando puo filtrare, contare o mostrare gli shot per stato. Se il campo si chiama sempre `user`, un altro tool puo rispondere alla domanda: "chi sta lavorando su questo shot?"
 
@@ -154,6 +169,7 @@ Domande:
 - Che cosa ha ricevuto il comando?
 - Che cosa ha prodotto?
 - Perche questi file sono piu facili da leggere rispetto a una nota scritta a mano?
+- Dove sono finite le note dentro il JSON?
 
 ---
 

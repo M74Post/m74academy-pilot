@@ -151,7 +151,7 @@ Le parti importanti:
 | `session_02/README.md`           | Guida studente dettagliata per la Sessione 02.                  |
 | `session_02/src/shot_manager.py` | Tool Python usato nella Sessione 02.                            |
 | `session_01/data/`               | File di input della sessione. Non modificarli a mano.           |
-| `session_02/data/`               | Dati JSON di input della seconda sessione.                      |
+| `session_02/data/`               | Dati della seconda sessione: nota libera `.txt` e input JSON.   |
 | `session_01/output/`             | Output generato dai comandi. Può essere eliminato e rigenerato. |
 | `session_02/output/`             | Manifest JSON generati dai comandi. Può essere rigenerato.      |
 | `.vscode/`                       | Impostazioni e raccomandazioni per VS Code.                     |

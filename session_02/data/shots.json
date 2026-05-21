@@ -5,7 +5,8 @@
     "shot": "0010",
     "department": "comp",
     "user": "sara",
-    "status": "in_progress"
+    "status": "in_progress",
+    "notes": "Da controllare il bordo del matte sul personaggio principale."
   },
   {
     "show": "red",
@@ -13,7 +14,8 @@
     "shot": "0020",
     "department": "anim",
     "user": "luca",
-    "status": "waiting"
+    "status": "waiting",
+    "notes": "In attesa del feedback del supervisore sul timing della camera."
   },
   {
     "show": "red",
@@ -21,7 +23,8 @@
     "shot": "0010",
     "department": "comp",
     "user": "mina",
-    "status": "review"
+    "status": "review",
+    "notes": "Mandato in review con dubbio sul livello di grain."
   },
   {
     "show": "red",
@@ -29,6 +32,7 @@
     "shot": "0020",
     "department": "lighting",
     "user": "omar",
-    "status": "done"
+    "status": "done",
+    "notes": "Approvato per il passaggio al dipartimento successivo."
   }
 ]

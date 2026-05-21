@@ -1,0 +1,7 @@
+Sara sta lavorando allo shot red/001/0010 nel dipartimento comp. Lo stato e in_progress. Da controllare il bordo del matte sul personaggio principale.
+
+Luca sta lavorando allo shot red/001/0020 nel dipartimento anim. Lo stato e waiting. In attesa del feedback del supervisore sul timing della camera.
+
+Mina sta lavorando allo shot red/002/0010 nel dipartimento comp. Lo stato e review. Mandato in review con dubbio sul livello di grain.
+
+Omar sta lavorando allo shot red/002/0020 nel dipartimento lighting. Lo stato e done. Approvato per il passaggio al dipartimento successivo.
