@@ -15,11 +15,11 @@ Il pilot è progettato come un percorso in quattro incontri. Il tool cresce un p
 | Sessione | Tema        | Idea principale                                                                                   |
 | -------- | ----------- | ------------------------------------------------------------------------------------------------- |
 | 01       | Struttura   | I nomi dei file contengono già dati di produzione. La pipeline li legge e crea cartelle coerenti. |
-| 02       | Memoria     | Ogni shot acquisisce uno stato leggibile, per esempio artista, dipartimento e avanzamento.        |
+| 02       | Memoria     | Ogni shot acquisisce uno stato leggibile, per esempio user assegnato e avanzamento.               |
 | 03       | Voce        | Le domande in linguaggio naturale diventano utili quando leggono dati strutturati affidabili.     |
 | 04       | Connessione | Strumenti diversi comunicano attraverso dati condivisi, non attraverso magia.                     |
 
-In questa versione del repository la parte attiva è `session_01/`. Le altre sessioni sono direzione didattica del pilot e possono essere aggiunte o sviluppate in seguito.
+In questa versione del repository le parti attive sono `session_01/` e `session_02/`. Le sessioni successive sono direzione didattica del pilot e possono essere aggiunte o sviluppate in seguito.
 
 ---
 
@@ -99,6 +99,12 @@ m74academy-pilot/
 │   ├── output/
 │   └── src/
 │       └── shot_manager.py
+├── session_02/
+│   ├── README.md
+│   ├── data/
+│   ├── output/
+│   └── src/
+│       └── shot_manager.py
 ```
 
 Le parti importanti:
@@ -107,8 +113,12 @@ Le parti importanti:
 | -------------------------------- | --------------------------------------------------------------- |
 | `session_01/README.md`           | Guida studente dettagliata per la Sessione 01.                  |
 | `session_01/src/shot_manager.py` | Tool Python usato nella Sessione 01.                            |
+| `session_02/README.md`           | Guida studente dettagliata per la Sessione 02.                  |
+| `session_02/src/shot_manager.py` | Tool Python usato nella Sessione 02.                            |
 | `session_01/data/`               | File di input della sessione. Non modificarli a mano.           |
+| `session_02/data/`               | Dati JSON di input della seconda sessione.                      |
 | `session_01/output/`             | Output generato dai comandi. Può essere eliminato e rigenerato. |
+| `session_02/output/`             | Manifest JSON generati dai comandi. Può essere rigenerato.      |
 | `.vscode/`                       | Impostazioni e raccomandazioni per VS Code.                     |
 | `other/`                         | Materiali di supporto o archivio; non è il punto di partenza.   |
 
@@ -177,7 +187,7 @@ Quando una guida ti chiede di modificare codice, cambia solo la riga indicata. P
 
 ## Stato del repository
 
-La Sessione 01 è il modulo attivo presente nel repository principale.
+La Sessione 01 e la Sessione 02 sono i moduli attivi presenti nel repository principale.
 
 Il pilot complessivo è pensato per quattro sessioni: struttura, memoria, voce e connessione. Quando nuove sessioni verranno aggiunte, dovrebbero seguire lo stesso schema:
 

@@ -1,0 +1,34 @@
+[
+  {
+    "show": "red",
+    "sequence": "001",
+    "shot": "0010",
+    "department": "comp",
+    "user": "sara",
+    "status": "in_progress"
+  },
+  {
+    "show": "red",
+    "sequence": "001",
+    "shot": "0020",
+    "department": "anim",
+    "user": "luca",
+    "status": "waiting"
+  },
+  {
+    "show": "red",
+    "sequence": "002",
+    "shot": "0010",
+    "department": "comp",
+    "user": "mina",
+    "status": "review"
+  },
+  {
+    "show": "red",
+    "sequence": "002",
+    "shot": "0020",
+    "department": "lighting",
+    "user": "omar",
+    "status": "done"
+  }
+]
