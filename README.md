@@ -19,7 +19,7 @@ Il pilot è progettato come un percorso in quattro incontri. Il tool cresce un p
 | 03       | Voce        | Le domande in linguaggio naturale diventano utili quando leggono dati strutturati affidabili.     |
 | 04       | Connessione | Strumenti diversi comunicano attraverso dati condivisi, non attraverso magia.                     |
 
-In questa versione del repository le parti attive sono `session_01/` e `session_02/`. Le sessioni successive sono direzione didattica del pilot e possono essere aggiunte o sviluppate in seguito.
+In questa versione del repository le parti attive sono `session_01/`, `session_02/` e `session_03/`. La sessione successiva e direzione didattica del pilot e puo essere aggiunta o sviluppata in seguito.
 
 ---
 
@@ -140,6 +140,12 @@ m74academy-pilot/
 │   ├── output/
 │   └── src/
 │       └── shot_manager.py
+├── session_03/
+│   ├── README.md
+│   ├── requirements.txt
+│   ├── data/
+│   └── src/
+│       └── shot_manager.py
 ```
 
 Le parti importanti:
@@ -150,8 +156,12 @@ Le parti importanti:
 | `session_01/src/shot_manager.py` | Tool Python usato nella Sessione 01.                            |
 | `session_02/README.md`           | Guida studente dettagliata per la Sessione 02.                  |
 | `session_02/src/shot_manager.py` | Tool Python usato nella Sessione 02.                            |
+| `session_03/README.md`           | Guida studente dettagliata per la Sessione 03.                  |
+| `session_03/src/shot_manager.py` | Tool Python usato nella Sessione 03 con OpenAI API.             |
+| `session_03/requirements.txt`    | Pacchetti Python necessari per la Sessione 03.                  |
 | `session_01/data/`               | File di input della sessione. Non modificarli a mano.           |
 | `session_02/data/`               | Dati della seconda sessione: nota libera `.txt` e input JSON.   |
+| `session_03/data/`               | Dati JSON usati come contesto per OpenAI.                       |
 | `session_01/output/`             | Output generato dai comandi. Può essere eliminato e rigenerato. |
 | `session_02/output/`             | Manifest JSON generati dai comandi. Può essere rigenerato.      |
 | `.vscode/`                       | Impostazioni e raccomandazioni per VS Code.                     |
@@ -222,7 +232,7 @@ Quando una guida ti chiede di modificare codice, cambia solo la riga indicata. P
 
 ## Stato del repository
 
-La Sessione 01 e la Sessione 02 sono i moduli attivi presenti nel repository principale.
+La Sessione 01, la Sessione 02 e la Sessione 03 sono i moduli attivi presenti nel repository principale.
 
 Il pilot complessivo è pensato per quattro sessioni: struttura, memoria, voce e connessione. Quando nuove sessioni verranno aggiunte, dovrebbero seguire lo stesso schema:
 

@@ -1,0 +1,68 @@
+[
+  {
+    "show": "red",
+    "sequence": "001",
+    "shot": "0010",
+    "department": "comp",
+    "user": "sara",
+    "status": "in_progress",
+    "notes": "Da controllare il bordo del matte sul personaggio principale.",
+    "last_update": "2026-05-20T09:00:00",
+    "next_department": "review"
+  },
+  {
+    "show": "red",
+    "sequence": "001",
+    "shot": "0020",
+    "department": "anim",
+    "user": "luca",
+    "status": "waiting",
+    "notes": "In attesa del feedback del supervisore sul timing della camera.",
+    "last_update": "2026-05-20T10:15:00",
+    "next_department": "comp"
+  },
+  {
+    "show": "red",
+    "sequence": "002",
+    "shot": "0010",
+    "department": "comp",
+    "user": "mina",
+    "status": "review",
+    "notes": "Mandato in review con dubbio sul livello di grain.",
+    "last_update": "2026-05-20T11:30:00",
+    "next_department": "final"
+  },
+  {
+    "show": "red",
+    "sequence": "002",
+    "shot": "0020",
+    "department": "lighting",
+    "user": "omar",
+    "status": "done",
+    "notes": "Approvato per il passaggio al dipartimento successivo.",
+    "last_update": "2026-05-20T12:45:00",
+    "next_department": "comp"
+  },
+  {
+    "show": "red",
+    "sequence": "003",
+    "shot": "0010",
+    "department": "anim",
+    "user": "giulia",
+    "status": "in_progress",
+    "notes": "Serve un controllo sul contatto dei piedi prima della consegna.",
+    "last_update": "2026-05-21T09:20:00",
+    "next_department": "lighting"
+  },
+  {
+    "show": "red",
+    "sequence": "003",
+    "shot": "0020",
+    "department": "lighting",
+    "user": "nora",
+    "status": "review",
+    "notes": "Review richiesta per bilanciare il key light con lo sfondo.",
+    "last_update": "2026-05-21T14:05:00",
+    "next_department": "comp"
+  }
+]
