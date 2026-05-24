@@ -10,16 +10,20 @@ Il corso non vuole trasformarti in programmatore in quattro sessioni. Vuole rend
 
 ## Le quattro sessioni
 
-Il pilot è progettato come un percorso in quattro incontri. Il tool cresce un passo alla volta.
+Il pilot è progettato come un percorso in quattro sessioni. Le prime tre sessioni sono incontri da 2 ore. La Sessione 04 è un blocco da 4 ore diviso in due parti: 4.1 e 4.2.
+
+Il tool cresce un passo alla volta: prima organizza file, poi salva memoria JSON, poi permette domande in linguaggio naturale, infine diventa un piccolo ponte da terminale che altri strumenti potranno chiamare.
 
 | Sessione | Tema        | Idea principale                                                                                   |
 | -------- | ----------- | ------------------------------------------------------------------------------------------------- |
 | 01       | Struttura   | I nomi dei file contengono già dati di produzione. La pipeline li legge e crea cartelle coerenti. |
 | 02       | Memoria     | Ogni shot acquisisce uno stato leggibile, per esempio user assegnato e avanzamento.               |
 | 03       | Voce        | Le domande in linguaggio naturale diventano utili quando leggono dati strutturati affidabili.     |
-| 04       | Connessione | Strumenti diversi comunicano attraverso dati condivisi, non attraverso magia.                     |
+| 04       | Connessione | Un tool CLI locale espone comandi stabili e legge/scrive dati JSON condivisi.                    |
 
-In questa versione del repository le parti attive sono `session_01/`, `session_02/` e `session_03/`. La sessione successiva e direzione didattica del pilot e puo essere aggiunta o sviluppata in seguito.
+La Sessione 04 non è un plugin Blender o Nuke. È la preparazione del tool da terminale con cui plugin esterni, costruiti in seguito, potranno comunicare.
+
+In questa versione del repository le parti attive sono `session_01/`, `session_02/` e `session_03/`. La cartella `session_04/` prepara la nuova direzione, ma la guida completa della sessione non è ancora scritta.
 
 ---
 
@@ -93,6 +97,7 @@ Questa struttura permette a comandi, dashboard, spreadsheet, tool DCC o AI assis
 ```text
 cartelle -> dove sono i file?
 JSON     -> che cosa sappiamo dello shot?
+CLI      -> come possono parlare altri strumenti con quei dati?
 ```
 
 ---
@@ -146,6 +151,10 @@ m74academy-pilot/
 │   ├── data/
 │   └── src/
 │       └── shot_manager.py
+├── session_04/
+│   ├── README.md
+│   ├── data/
+│   └── src/
 ```
 
 Le parti importanti:
@@ -159,9 +168,11 @@ Le parti importanti:
 | `session_03/README.md`           | Guida studente dettagliata per la Sessione 03.                  |
 | `session_03/src/shot_manager.py` | Tool Python usato nella Sessione 03 con OpenAI API.             |
 | `session_03/requirements.txt`    | Pacchetti Python necessari per la Sessione 03.                  |
+| `session_04/README.md`           | Nota di setup per la nuova direzione della Sessione 04.         |
 | `session_01/data/`               | File di input della sessione. Non modificarli a mano.           |
 | `session_02/data/`               | Dati della seconda sessione: nota libera `.txt` e input JSON.   |
 | `session_03/data/`               | Dati JSON usati come contesto per OpenAI.                       |
+| `session_04/data/`               | Area preparata per i dati condivisi del futuro tool CLI.        |
 | `session_01/output/`             | Output generato dai comandi. Può essere eliminato e rigenerato. |
 | `session_02/output/`             | Manifest JSON generati dai comandi. Può essere rigenerato.      |
 | `.vscode/`                       | Impostazioni e raccomandazioni per VS Code.                     |
@@ -232,9 +243,14 @@ Quando una guida ti chiede di modificare codice, cambia solo la riga indicata. P
 
 ## Stato del repository
 
-La Sessione 01, la Sessione 02 e la Sessione 03 sono i moduli attivi presenti nel repository principale.
+La Sessione 01, la Sessione 02 e la Sessione 03 sono i moduli attivi con guida completa presenti nel repository principale.
 
-Il pilot complessivo è pensato per quattro sessioni: struttura, memoria, voce e connessione. Quando nuove sessioni verranno aggiunte, dovrebbero seguire lo stesso schema:
+La Sessione 04 è in preparazione. Sarà una sessione da 4 ore divisa in:
+
+- **4.1**: costruzione del tool CLI locale e del contratto JSON condiviso;
+- **4.2**: simulazione della comunicazione con strumenti esterni, usando chiamate da terminale o input mock.
+
+Il pilot complessivo è pensato per quattro temi: struttura, memoria, voce e connessione. Le sessioni nuove dovrebbero seguire lo stesso schema:
 
 ```text
 session_XX/
