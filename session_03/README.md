@@ -139,7 +139,17 @@ Questo comando legge `requirements.txt` e installa `openai`.
 
 ---
 
-## Parte 2 - Prepara la chiave API
+## Parte 2 - API, ChatGPT e chiave
+
+Prima distinzione importante:
+
+```text
+ChatGPT        -> app/interfaccia usata da una persona
+OpenAI API     -> servizio chiamato da un programma
+OPENAI_API_KEY -> chiave che permette al programma di chiamare il servizio
+```
+
+In questa sessione non stiamo usando la chat normale. Stiamo scrivendo un piccolo tool Python che chiama OpenAI da terminale.
 
 Per chiamare OpenAI serve una chiave API. La chiave non va scritta nel codice e non va salvata nel repository.
 
@@ -156,6 +166,12 @@ OPENAI_API_KEY -> chiave temporanea disponibile nel terminale
 ```
 
 Il codice usera questa chiave automaticamente quando crea il client OpenAI.
+
+Domande:
+
+- Perche non scriviamo la chiave dentro `shot_manager.py`?
+- Che differenza c'e tra scrivere una domanda in ChatGPT e chiamare OpenAI da Python?
+- Chi sta facendo la chiamata API: VS Code, il terminale o il codice Python?
 
 ---
 
@@ -195,7 +211,60 @@ Domande:
 
 ---
 
-## Parte 4 - La comunicazione con OpenAI
+## Parte 4 - Token, uso e costo
+
+Ogni chiamata API consuma token.
+
+Per oggi puoi leggere i token cosi:
+
+```text
+input tokens  -> quello che mandiamo al modello
+output tokens -> quello che il modello genera come risposta
+```
+
+Quando mandiamo `shots.json` a OpenAI, quei dati fanno parte dell'input. Se il JSON diventa molto grande, aumentano anche gli input tokens.
+
+Il comando ha un'opzione per vedere le statistiche della risposta:
+
+```bash
+python shot_manager.py ask "Quali shot sono in review?" --stats
+```
+
+Output atteso dopo la risposta:
+
+```text
+=== STATS ===
+
+Model: ...
+Usage:
+  Input tokens: ...
+  Output tokens: ...
+```
+
+Puoi limitare la lunghezza massima della risposta:
+
+```bash
+python shot_manager.py ask "Quali shot sono in review?" --max-output-tokens 120
+```
+
+I token e i costi si controllano anche nella dashboard OpenAI Platform. Il punto importante non e memorizzare i prezzi: e capire che una chiamata API ha uso misurabile.
+
+Riferimenti utili:
+
+- [OpenAI API Usage Dashboard](https://help.openai.com/en/articles/10478918-api-usage-dashboard)
+- [Come controllare l'uso dei token](https://help.openai.com/en/articles/6614209-how-do-i-check-my-token-usage)
+- [API key e buone pratiche di produzione](https://platform.openai.com/docs/guides/production-best-practices/streaming.iso)
+
+Domande:
+
+- Che cosa entra negli input tokens?
+- Che cosa entra negli output tokens?
+- Perche `shots.json` puo aumentare il costo?
+- Perche `--max-output-tokens` puo essere utile?
+
+---
+
+## Parte 5 - La comunicazione con OpenAI
 
 Questa sessione non usa un file con domande gia pronte. La domanda arriva dal terminale.
 
@@ -218,7 +287,7 @@ La cosa importante: OpenAI ha gia il suo contratto. Non inventiamo un formato nu
 
 ---
 
-## Parte 5 - Fai una domanda alla pipeline
+## Parte 6 - Fai una domanda alla pipeline
 
 Esegui:
 
@@ -251,12 +320,6 @@ Puoi anche cambiare modello, ma solo tra quelli scelti per la sessione:
 python shot_manager.py ask "Quali shot sono in review?" --model gpt-5.4-nano
 ```
 
-Puoi cambiare la lunghezza massima della risposta:
-
-```bash
-python shot_manager.py ask "Quali shot sono in review?" --max-output-tokens 120
-```
-
 Puoi anche vedere qualche statistica della chiamata:
 
 ```bash
@@ -276,7 +339,7 @@ Domande:
 
 ---
 
-## Parte 6 - Apri il codice
+## Parte 7 - Apri il codice
 
 Apri:
 
@@ -335,7 +398,7 @@ testo stampato = output della piccola app
 
 ---
 
-## Parte 7 - Il contratto OpenAI
+## Parte 8 - Il contratto OpenAI
 
 Trova la funzione `_build_openai_payload`.
 
@@ -401,7 +464,7 @@ Queste regole sono parte del comportamento dell'app.
 
 ---
 
-## Parte 8 - Esercizio: dry run
+## Parte 9 - Esercizio: dry run
 
 In pipeline spesso vuoi controllare cosa succederebbe prima di eseguire davvero un'azione.
 
@@ -478,7 +541,7 @@ Domande:
 
 ---
 
-## Parte 9 - Modifica mirata
+## Parte 10 - Modifica mirata
 
 Dentro `_build_openai_payload`, cerca questa riga:
 
@@ -509,7 +572,50 @@ Domande:
 
 ---
 
-## Parte 10 - Prova una domanda senza risposta
+## Parte 11 - Live coding: risposta JSON
+
+Questa parte e guidata dall'istruttore.
+
+Finora il modello ha risposto con testo libero. Ora vogliamo chiedergli una risposta piu facile da leggere con Python: JSON.
+
+Dentro `_build_openai_payload`, modifica temporaneamente le regole del prompt aggiungendo:
+
+```text
+Rispondi solo con JSON valido.
+Usa questa forma:
+{"answer": "...", "shots": ["red/002/0010"], "reason": "..."}
+```
+
+Esegui:
+
+```bash
+python shot_manager.py ask "Quali shot sono in review?"
+```
+
+Se il modello risponde con JSON valido, possiamo leggerlo da Python con:
+
+```python
+data = json.loads(response.output_text)
+print(data["answer"])
+```
+
+Questa e una differenza importante:
+
+```text
+testo libero -> buono per una persona
+JSON         -> buono per una persona e per un tool
+```
+
+Domande:
+
+- Perche chiedere JSON puo essere utile?
+- Cosa succede se il modello risponde con JSON non valido?
+- Quale parte e fragile: il file `shots.json` o la risposta generata?
+- Perche questa modifica e piu delicata del dry run?
+
+---
+
+## Parte 12 - Prova una domanda senza risposta
 
 Esegui:
 
