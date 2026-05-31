@@ -93,6 +93,8 @@ def cmd_setup_check(args):
         print("OPENAI_API_KEY: mancante")
         print("Esempio macOS / Linux:")
         print('  export OPENAI_API_KEY="la_tua_chiave"')
+        print("Esempio Windows PowerShell:")
+        print('  $env:OPENAI_API_KEY="la_tua_chiave"')
 
     if all(checks):
         print("\nSetup pronto.")

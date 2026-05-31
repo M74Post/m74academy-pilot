@@ -156,7 +156,11 @@ Per chiamare OpenAI serve una chiave API. La chiave non va scritta nel codice e 
 La mettiamo in una variabile d'ambiente:
 
 ```bash
+# macOS / Linux
 export OPENAI_API_KEY="la_tua_chiave"
+
+# Windows PowerShell
+$env:OPENAI_API_KEY="la_tua_chiave"
 ```
 
 Puoi leggerla cosi:
