@@ -4,24 +4,25 @@ Repository di lavoro per il pilot M74 Academy.
 
 Questo è un workspace didattico per imparare a ragionare come una pipeline: aprire piccoli strumenti, eseguirli, leggere cosa fanno, modificare una parte mirata e osservare il risultato.
 
-Il corso non vuole trasformarti in programmatore in quattro sessioni. Vuole rendere leggibili i sistemi tecnici: file, cartelle, comandi, JSON, stato di produzione e strumenti che comunicano tra loro.
+Il corso non vuole trasformarti in programmatore in cinque sessioni. Vuole rendere leggibili i sistemi tecnici: file, cartelle, comandi, JSON, stato di produzione e strumenti che comunicano tra loro.
 
 ---
 
-## Le quattro sessioni
+## Le cinque sessioni
 
-Il pilot è progettato come un percorso in quattro sessioni. Le prime tre sessioni sono incontri da 2 ore. La Sessione 04 è un blocco da 4 ore diviso in due parti: 4.1 e 4.2.
+Il pilot è progettato come un percorso in cinque sessioni. Le prime tre sessioni sono incontri da 2 ore. La Sessione 04 è un blocco da 4 ore diviso in due parti: 4.1 e 4.2. La Sessione 05 è un incontro da 2 ore in Nuke.
 
-Il tool cresce un passo alla volta: prima organizza file, poi salva memoria JSON, poi permette domande in linguaggio naturale, infine diventa un piccolo ponte da terminale che altri strumenti potranno chiamare.
+Il tool cresce un passo alla volta: prima organizza file, poi salva memoria JSON, poi permette domande in linguaggio naturale, poi diventa un piccolo ponte da terminale, infine muove il DAG di Nuke.
 
 | Sessione | Tema        | Idea principale                                                                                   |
 | -------- | ----------- | ------------------------------------------------------------------------------------------------- |
 | 01       | Struttura   | I nomi dei file contengono già dati di produzione. La pipeline li legge e crea cartelle coerenti. |
 | 02       | Memoria     | Ogni shot acquisisce uno stato leggibile, per esempio user assegnato e avanzamento.               |
 | 03       | Voce        | Le domande in linguaggio naturale diventano utili quando leggono dati strutturati affidabili.     |
-| 04       | Connessione | Un tool CLI locale espone comandi stabili e legge/scrive dati JSON condivisi.                    |
+| 04       | Connessione | Un tool CLI locale espone comandi stabili e legge/scrive dati JSON condivisi.                     |
+| 05       | Azione      | Il JSON costruito nelle sessioni precedenti pilota un nodo graph Nuke automaticamente.            |
 
-La Sessione 04 non è un plugin Blender o Nuke. È la preparazione del tool da terminale con cui plugin esterni, costruiti in seguito, potranno comunicare.
+La Sessione 04 prepara il tool da terminale con cui plugin esterni possono comunicare. La Sessione 05 porta quel contratto JSON dentro Nuke: lo stesso dato strutturato che ha organizzato le cartelle ora crea Read node, colori e layout nel DAG.
 
 In questa versione del repository le parti attive sono `session_01/`, `session_02/` e `session_03/`. La cartella `session_04/` prepara la nuova direzione, ma la guida completa della sessione non è ancora scritta.
 
@@ -155,28 +156,45 @@ m74academy-pilot/
 │   ├── README.md
 │   ├── data/
 │   └── src/
+│       └── shot_manager.py
+├── session_05/
+│   ├── README.md
+│   ├── data/
+│   │   └── shots.json
+│   ├── docs/
+│   │   └── guida_istruttore.md
+│   └── src/
+│       ├── shot_manager.py
+│       └── load_shots.py
 ```
 
 Le parti importanti:
 
-| Percorso                         | Uso                                                             |
-| -------------------------------- | --------------------------------------------------------------- |
-| `session_01/README.md`           | Guida studente dettagliata per la Sessione 01.                  |
-| `session_01/src/shot_manager.py` | Tool Python usato nella Sessione 01.                            |
-| `session_02/README.md`           | Guida studente dettagliata per la Sessione 02.                  |
-| `session_02/src/shot_manager.py` | Tool Python usato nella Sessione 02.                            |
-| `session_03/README.md`           | Guida studente dettagliata per la Sessione 03.                  |
-| `session_03/src/shot_manager.py` | Tool Python usato nella Sessione 03 con OpenAI API.             |
-| `session_03/requirements.txt`    | Pacchetti Python necessari per la Sessione 03.                  |
-| `session_04/README.md`           | Nota di setup per la nuova direzione della Sessione 04.         |
-| `session_01/data/`               | File di input della sessione. Non modificarli a mano.           |
-| `session_02/data/`               | Dati della seconda sessione: nota libera `.txt` e input JSON.   |
-| `session_03/data/`               | Dati JSON usati come contesto per OpenAI.                       |
-| `session_04/data/`               | Area preparata per i dati condivisi del futuro tool CLI.        |
-| `session_01/output/`             | Output generato dai comandi. Può essere eliminato e rigenerato. |
-| `session_02/output/`             | Manifest JSON generati dai comandi. Può essere rigenerato.      |
-| `.vscode/`                       | Impostazioni e raccomandazioni per VS Code.                     |
-| `other/`                         | Materiali di supporto o archivio; non è il punto di partenza.   |
+| Percorso                              | Uso                                                              |
+| ------------------------------------- | ---------------------------------------------------------------- |
+| `session_01/README.md`                | Guida studente per la Sessione 01.                               |
+| `session_01/src/shot_manager.py`      | Tool Python usato nella Sessione 01.                             |
+| `session_02/README.md`                | Guida studente per la Sessione 02.                               |
+| `session_02/src/shot_manager.py`      | Tool Python usato nella Sessione 02.                             |
+| `session_03/README.md`                | Guida studente per la Sessione 03.                               |
+| `session_03/src/shot_manager.py`      | Tool Python usato nella Sessione 03 con OpenAI API.              |
+| `session_03/requirements.txt`         | Pacchetti Python necessari per la Sessione 03.                   |
+| `session_04/README.md`                | Guida studente per la Sessione 04.                               |
+| `session_04/src/shot_manager.py`      | Tool Python usato nella Sessione 04.                             |
+| `session_05/README.md`                | Guida studente per la Sessione 05 (Nuke).                        |
+| `session_05/src/shot_manager.py`      | Tool Python usato nella Sessione 05: aggiunge `create-manifest`. |
+| `session_05/src/load_shots.py`        | Script Nuke che crea Read node dal JSON.                         |
+| `session_05/docs/guida_istruttore.md` | Guida istruttore per la Sessione 05.                             |
+| `session_05/data/shots.json`          | JSON arricchito con `file_path`, `frame_start`, `frame_end`.     |
+| `session_01/data/`                    | File di input della sessione. Non modificarli a mano.            |
+| `session_02/data/`                    | Dati della seconda sessione: nota libera `.txt` e input JSON.    |
+| `session_03/data/`                    | Dati JSON usati come contesto per OpenAI.                        |
+| `session_04/data/`                    | Dati condivisi del tool CLI.                                     |
+| `session_05/data/`                    | 72 file EXR placeholder e `shots.json` per la Sessione 05.       |
+| `session_01/output/`                  | Output generato dai comandi. Può essere eliminato e rigenerato.  |
+| `session_02/output/`                  | Manifest JSON generati dai comandi. Può essere rigenerato.       |
+| `.vscode/`                            | Impostazioni e raccomandazioni per VS Code.                      |
+| `other/`                              | Materiali di supporto o archivio; non è il punto di partenza.    |
 
 ---
 
@@ -243,19 +261,15 @@ Quando una guida ti chiede di modificare codice, cambia solo la riga indicata. P
 
 ## Stato del repository
 
-La Sessione 01, la Sessione 02 e la Sessione 03 sono i moduli attivi con guida completa presenti nel repository principale.
+Le Sessioni 01, 02, 03, 04 e 05 sono complete con guida studente, codice e dati.
 
-La Sessione 04 è in preparazione. Sarà una sessione da 4 ore divisa in:
-
-- **4.1**: costruzione del tool CLI locale e del contratto JSON condiviso;
-- **4.2**: simulazione della comunicazione con strumenti esterni, usando chiamate da terminale o input mock.
-
-Il pilot complessivo è pensato per quattro temi: struttura, memoria, voce e connessione. Le sessioni nuove dovrebbero seguire lo stesso schema:
+Il pilot copre cinque temi: struttura, memoria, voce, connessione e azione. Le sessioni nuove seguono questo schema:
 
 ```text
 session_XX/
 ├── README.md
 ├── data/
-├── output/
+├── docs/
+│   └── guida_istruttore.md
 └── src/
 ```
